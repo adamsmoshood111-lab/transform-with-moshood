@@ -1,1 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#11110f">
+<meta name="description" content="Transform with Moshood — explore self-awareness, psychology, human behaviour, beliefs and the deeper questions of life.">
 
+<title>Transform with Moshood | Beyond the Obvious</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #11110f;
+  --surface: #1a1a17;
+  --surface2: #22221d;
+  --gold: #c9a86a;
+  --gold-light: #e2c58b;
+  --text: #f0eee8;
+  --muted: #aaa79e;
+  --border: rgba(201,168,106,.22);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(17,17,15,.96);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  color: var(--gold-light);
+}
+
+.brand small {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+nav a {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+nav a:hover { color: var(--gold-light); }
+
+.menu-button {
+  display: none;
+  background: none;
+  color: var(--gold-light);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  font-size: 18px;
+}
+
+.hero {
+  min-height: 610px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(12,12,11,.94), rgba(12,12,11,.57)),
+    linear-gradient(0deg, var(--bg), transparent 40%),
+    url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85') center/cover;
+}
+
+.hero-content {
+  max-width: 720px;
+  padding: 95px 0 115px;
+}
+
+.eyebrow {
+  color: var(--gold-light);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(43px, 8vw, 82px);
+  margin: 22px 0;
+  letter-spacing: -2px;
+}
+
+h1 span { color: var(--gold-light); }
+
+.hero p {
+  max-width: 520px;
+  color: #d0cdc4;
+  font-size: 16px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 13px 21px;
+  background: var(--gold);
+  color: #15140f;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+}
+
+.button:hover { background: var(--gold-light); }
+
+.button.secondary {
+  background: transparent;
+  color: var(--gold-light);
+}
+
+section { padding: 85px 0; }
+
+.section-heading {
+  max-width: 650px;
+  margin-bottom: 35px;
+}
+
+.section-heading h2 {
+  font-size: clamp(30px, 5vw, 47px);
+  margin: 12px 0;
+}
+
+.section-heading p, .muted { color: var(--muted); }
+
+.featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.featured-image {
+  min-height: 330px;
+  background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85') center/cover;
+}
+
+.featured-copy {
+  padding: clamp(25px, 5vw, 55px);
+  align-self: center;
+}
+
+.featured-copy h3 {
+  font-size: clamp(27px, 4vw, 38px);
+  margin: 14px 0;
+}
+
+.tag {
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 25px;
+  min-height: 190px;
+  transition: border-color .2s, transform .2s;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.card .number {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.card h3 {
+  font-size: 23px;
+  margin: 18px 0 9px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.thinking {
+  background:
+    linear-gradient(rgba(12,12,11,.88), rgba(12,12,11,.94)),
+    url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1600&q=85') center/cover;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.question-box {
+  max-width: 760px;
+  margin: auto;
+  padding: clamp(25px, 6vw, 55px);
+  background: rgba(17,17,15,.75);
+  border: 1px solid var(--border);
+}
+
+.question-box h2 {
+  font-size: clamp(28px, 5vw, 43px);
+  margin: 15px 0 25px;
+}
+
+.choices {
+  display: grid;
+  gap: 10px;
+}
+
+.choice {
+  text-align: left;
+  padding: 15px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.choice:hover, .choice:focus {
+  border-color: var(--gold);
+  background: var(--surface2);
+}
+
+#reflection {
+  display: none;
+  margin-top: 22px;
+  padding: 20px;
+  border-left: 2px solid var(--gold);
+  background: var(--surface);
+  color: #d5d1c6;
+}
+
+#reflection h3 {
+  color: var(--gold-light);
+  margin-top: 0;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.about-mark {
+  border: 1px solid var(--border);
+  padding: 35px;
+  background: radial-gradient(ellipse at top, #393024, var(--surface) 70%);
+}
+
+.about-mark h2 {
+  font-size: 40px;
+  color: var(--gold-light);
+}
+
+.about-copy p { color: var(--muted); }
+
+.closing {
+  text-align: center;
+  padding: 90px 20px;
+  background: var(--surface);
+}
+
+.closing h2 {
+  font-size: clamp(30px, 5vw, 48px);
+  max-width: 700px;
+  margin: 15px auto;
+}
+
+footer {
+  padding: 30px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 760px) {
+  .menu-button { display: block; }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    padding: 22px 5%;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  nav.open { display: flex; }
+
+  .hero { min-height: 560px; }
+
+  .hero-content { padding: 80px 0; }
+
+  .featured, .about-layout { grid-template-columns: 1fr; }
+
+  .featured-image { min-height: 240px; }
+
+  .grid { grid-template-columns: 1fr; }
+
+  section { padding: 65px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      Transform with Moshood
+      <small>Think · Understand · Transform</small>
+    </a>
+
+    <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+    <nav id="navigation">
+      <a href="#home">Home</a>
+      <a href="#journal">Journal</a>
+      <a href="#explore">Explore</a>
+      <a href="#thinking">Thinking Room</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <div class="eyebrow">A space for deeper understanding</div>
+    <h1>Understand what <span>lies beneath.</span></h1>
+    <p>
+      Explore the hidden patterns behind human behaviour, the beliefs
+      that shape your world, and the questions that lead to a deeper
+      understanding of yourself and life.
+    </p>
+    <a class="button" href="#explore">Begin exploring ↗</a>
+    <a class="button secondary" href="#thinking">Enter the Thinking Room</a>
+  </div>
+</section>
+
+<section id="journal">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">From the journal</div>
+      <h2>Look beyond the obvious.</h2>
+      <p>
+        Familiar questions often have deeper explanations.
+        Start with curiosity, examine the evidence, and discover
+        what a closer look might reveal.
+      </p>
+    </div>
+
+    <article class="featured">
+      <div class="featured-image" role="img" aria-label="A quiet mountain landscape beneath the night sky"></div>
+      <div class="featured-copy">
+        <div class="tag">Psychology · Beliefs</div>
+        <h3>Why Do We Defend Beliefs Even When Evidence Challenges Them?</h3>
+        <p class="muted">
+          Sometimes, changing your mind is not simply a matter of
+          receiving better information. What happens when a belief
+          becomes connected to your identity, emotions, or relationships?
+        </p>
+        <a class="button" href="#thinking">Explore the question ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="explore">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Explore ideas</div>
+      <h2>Different questions. Deeper perspectives.</h2>
+      <p>
+        Explore the forces that shape how we think, feel, behave,
+        relate to others, and understand the world.
+      </p>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="#thinking">
+        <div class="number">01 / INNER WORLD</div>
+        <h3>Self-awareness</h3>
+        <p>Understand your emotions, motivations, fears, desires, and inner conflicts.</p>
+      </a>
+
+      <a class="card" href="#thinking">
+        <div class="number">02 / HUMAN MIND</div>
+        <h3>Psychology & Behaviour</h3>
+        <p>Investigate why people think, feel, and behave the way they do.</p>
+      </a>
+
+      <a class="card" href="#thinking">
+        <div class="number">03 / WHAT WE BELIEVE</div>
+        <h3>Beliefs & Biases</h3>
+        <p>Examine assumptions, mental shortcuts, and the way we evaluate evidence.</p>
+      </a>
+
+      <a class="card" href="#thinking">
+        <div class="number">04 / BETWEEN PEOPLE</div>
+        <h3>Relationships & Society</h3>
+        <p>Explore social influence, connection, communication, and human dynamics.</p>
+      </a>
+
+      <a class="card" href="#thinking">
+        <div class="number">05 / THINK INDEPENDENTLY</div>
+        <h3>Critical Thinking</h3>
+        <p>Question explanations, compare perspectives, and reason more carefully.</p>
+      </a>
+
+      <a class="card" href="#thinking">
+        <div class="number">06 / THE BIGGER PICTURE</div>
+        <h3>Life & Philosophy</h3>
+        <p>Reflect on meaning, values, uncertainty, and the questions we often avoid.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="thinking" id="thinking">
+  <div class="container">
+    <div class="question-box">
+      <div class="eyebrow">The Thinking Room</div>
+      <h2>When someone challenges a belief you hold, what makes it difficult to reconsider it?</h2>
+      <p class="muted">
+        Choose the possibility that feels most relevant. There is no
+        right answer here; the aim is to examine your reasoning.
+      </p>
+
+      <div class="choices">
+        <button class="choice" data-answer="identity">A. The belief has become part of my identity.</button>
+        <button class="choice" data-answer="error">B. Admitting I might be wrong is uncomfortable.</button>
+        <button class="choice" data-answer="social">C. Changing my mind might affect how others see me.</button>
+        <button class="choice" data-answer="evidence">D. I genuinely believe the available evidence supports my view.</button>
+      </div>
+
+      <div id="reflection" aria-live="polite">
+        <h3 id="reflectionTitle">A closer look</h3>
+        <p id="reflectionText"></p>
+        <p>
+          <strong>Reflect:</strong> What evidence would genuinely make
+          you reconsider your position?
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-layout">
+    <div class="about-mark">
+      <div class="eyebrow">The philosophy</div>
+      <h2>Curiosity before certainty.</h2>
+      <p class="muted">Understanding begins when we become willing to look closer.</p>
+    </div>
+
+    <div class="about-copy">
+      <div class="eyebrow">About Transform with Moshood</div>
+      <h2>Personal growth begins with understanding.</h2>
+      <p>
+        Transform with Moshood is a space for people who want to
+        understand themselves and the world more deeply.
+      </p>
+      <p>
+        Rather than offering easy answers to complicated questions,
+        this platform explores the psychological, social, and
+        philosophical forces that influence human life.
+      </p>
+      <p>
+        The goal is not to reject familiar explanations simply because
+        they are familiar. It is to examine them carefully, distinguish
+        evidence from assumption, and remain open to learning.
+      </p>
+      <p>
+        The journey begins with curiosity, moves through understanding,
+        and creates room for honest self-reflection.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="eyebrow">Your journey starts here</div>
+  <h2>The better question might change how you see everything.</h2>
+  <a class="button" href="#thinking">Start thinking ↗</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Transform with Moshood</span>
+    <span>Think deeper. Understand better. Live consciously.</span>
+  </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById('menuButton');
+const navigation = document.getElementById('navigation');
+
+menuButton.addEventListener('click', () => {
+  const isOpen = navigation.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', isOpen);
+  menuButton.textContent = isOpen ? '✕' : '☰';
+});
+
+navigation.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navigation.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.textContent = '☰';
+  });
+});
+
+const reflections = {
+  identity: {
+    title: 'When a belief becomes part of who we are',
+    text: 'A challenge to a deeply held belief can feel like a challenge to the person holding it. This can make it harder to examine contrary evidence fairly. Ask yourself whether you are protecting the explanation because it is well supported, or because it feels personal.'
+  },
+  error: {
+    title: 'The discomfort of being wrong',
+    text: 'Admitting an error can threaten our confidence and how we see ourselves. But changing a position in response to good evidence can also be a sign of intellectual honesty. Consider whether being right matters more to you than understanding what is true.'
+  },
+  social: {
+    title: 'The influence of other people',
+    text: 'Our social environment can shape which opinions feel safe to express. Disagreement may carry a perceived cost when belonging or approval matters. Consider whether you would evaluate the same evidence differently if nobody else knew your conclusion.'
+  },
+  evidence: {
+    title: 'Confidence and evidence',
+    text: 'You may have good reasons for your position. The useful next step is to examine the quality of those reasons, including evidence that supports and challenges your view. Ask what would change your mind, and whether your standard of evidence is consistent across different beliefs.'
+  }
+};
+
+document.querySelectorAll('.choice').forEach(button => {
+  button.addEventListener('click', () => {
+    const result = reflections[button.dataset.answer];
+    document.getElementById('reflectionTitle').textContent = result.title;
+    document.getElementById('reflectionText').textContent = result.text;
+    document.getElementById('reflection').style.display = 'block';
+    document.getElementById('reflection').scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest'
+    });
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+  </html>
